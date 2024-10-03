@@ -5,12 +5,13 @@ import { Auth } from './pages/auth';
 
 function App() {
 
+
   return ( 
   <Router> 
     <div className='app-container'>
       <Routes>
-        <Route path="/" element={<Dashboard/>} />
-        <Route path="/auth" element={<Auth/>} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </div>
   </Router>
