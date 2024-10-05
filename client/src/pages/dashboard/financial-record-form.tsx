@@ -1,5 +1,6 @@
-import { useState } from "react"
-import { useUser } from '@clerk/clerk-react'
+import { useContext, useState } from "react";
+import { useUser } from '@clerk/clerk-react';
+import { useFinancialRecords } from "../../contexts/financial-record-context";
 
 export const FinancialRecordForm = () => {
 
@@ -12,11 +13,13 @@ export const FinancialRecordForm = () => {
     const [overseasflag, setOverseasFlag] = useState<string>("");
     const [creditcard, setCreditCard] = useState<string>("");
 
+    const { addRecord } = useFinancialRecords();
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const newRecord = {
-            userID: user?.id,
+            userID: user?.id ?? "",
             date: new Date(),
             description: description,
             amount: parseFloat(amount),
@@ -26,7 +29,7 @@ export const FinancialRecordForm = () => {
             creditcard: creditcard,
         };
 
-        // addRecord(newRecord);
+        addRecord(newRecord);
         setDescription("");
         setAmount("");
         setCategory("");
