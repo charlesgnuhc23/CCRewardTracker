@@ -96,7 +96,7 @@ export const FinancialRecordsProvider = ({children} : {children: React.ReactNode
                 const deletedRecord = await response.json();
                 setRecords((prev) => 
                     prev.filter((record) => record._id !== deletedRecord._id)
-            );
+                );
             }
         } catch (err) {}
     }
